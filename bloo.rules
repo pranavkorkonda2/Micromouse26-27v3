@@ -1,0 +1,126 @@
+
+(rules PCB bloo.dsn
+  (snapAngle 
+    fortyfive_degree
+  )
+  (rule
+    (width 300.0)
+    (clearance 5.2)
+    (clearance 150.0 (type smd_to_turn_gap))
+    (clearance 1.4 (type smd))
+    (clearance 5.2 (type "SubPower_Motor,Default"))
+    (clearance 5.2 (type AGND,Default))
+    (clearance 5.2 (type MainPower,Default))
+    (clearance 243.0 (type "board_edge"))
+  )
+  (padstack "Via[0-1]_600:400_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:400_um-SubPower_Motor,Default" "Via[0-1]_600:400_um" "SubPower_Motor,Default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-SubPower_Motor,Default" "Via[0-1]_800:400_um" "SubPower_Motor,Default"
+  )
+  (via 
+    "Via[0-1]_600:400_um-AGND,Default" "Via[0-1]_600:400_um" AGND,Default
+  )
+  (via 
+    "Via[0-1]_800:400_um-AGND,Default" "Via[0-1]_800:400_um" AGND,Default
+  )
+  (via 
+    "Via[0-1]_600:400_um-MainPower,Default" "Via[0-1]_600:400_um" MainPower,Default
+  )
+  (via 
+    "Via[0-1]_800:400_um-MainPower,Default" "Via[0-1]_800:400_um" MainPower,Default
+  )
+  (viaRule
+    default "Via[0-1]_600:400_um"
+  )
+  (viaRule
+    default "Via[0-1]_600:400_um"
+  )
+  (viaRule
+    "SubPower_Motor,Default" "Via[0-1]_800:400_um-SubPower_Motor,Default"
+  )
+  (viaRule
+    AGND,Default "Via[0-1]_800:400_um-AGND,Default"
+  )
+  (viaRule
+    MainPower,Default "Via[0-1]_800:400_um-MainPower,Default"
+  )
+  (class default
+    GND "Net-(D2-K)" "Net-(Q11-D)" "Net-(D0-K)" "BT_RESET" "Net-(D3-K)" "Net-(Q12-D)" "EMIT_2"
+    "Net-(S1-Pad3)" "LED_RED" "Net-(D4-A)" "EMIT_3" "Net-(D1-K)" "LED_BLUE" "Net-(D6-A)" "RECEIV_4"
+    "EMIT_4" "Net-(Q9-D)" "Net-(D7-K)" RST "BT_SWDIO" "BT_SWDCLK" "RECEIV_1" BUTTON
+    "Net-(U5-P00{slash}XL1)" "Net-(U5-P01{slash}XL2)" "V_METER" "unconnected-(U5-P20{slash}LED-Pad2)" "BLE_LED" "BLE_STATE" "USART1_TX" "USART1_RX"
+    "unconnected-(U5-P03{slash}AIN1-Pad9)" "BLE_SPI_SCK" "BLE_SPI_MISO" "BLE_SPI_MOSI" "unconnected-(U5-P28-PadA1)" "unconnected-(U5-P17-PadA2)" "unconnected-(U5-P04-PadA3)" "unconnected-(U5-P06-PadA4)"
+    "unconnected-(U5-P08-PadA5)" "unconnected-(U5-P25-PadB1)" "unconnected-(U5-P29-PadB2)" "unconnected-(U5-P31{slash}DCC-PadB3)" "unconnected-(U5-P05-PadB4)" "unconnected-(U5-P07-PadB5)" "unconnected-(U5-P24-PadC1)" "unconnected-(U5-P22-PadC2)"
+    "unconnected-(U5-P30{slash}DEC4-PadC3)" "unconnected-(U5-P15-PadC4)" "unconnected-(U5-P09-PadC5)" "unconnected-(U5-P23-PadD1)" "unconnected-(U5-P19-PadD2)" "unconnected-(U5-P16-PadD3)" "unconnected-(U5-P14-PadD4)" "unconnected-(U5-P10-PadD5)"
+    "BUTTON_2" "M1_SPD" "M1_FWD" "M1_BACK" "M2_SPD" "M2_FWD" "M2_BACK" "EMIT_1"
+    "LED_GREEN" "M2_ENC_B" "M2_ENC_A" BUZZER "unconnected-(U1-5V-Pad18)" "unconnected-(U1-VBat-Pad21)" "RECEIV_3" "M1_ENC_A"
+    "M1_ENC_B" "RECEIV_2" "Net-(Q10-D)" "Net-(D5-A)" "3V3_BYP" "Net-(BT1-+)"
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 300.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "SubPower_Motor,Default"
+    +3.3VA "M1_OUT_1" "M1_OUT_2" "M2_OUT_1" "M2_OUT_2"
+    (clearance_class "SubPower_Motor,Default")
+    (via_rule "SubPower_Motor,Default")
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class AGND,Default
+    AGND
+    (clearance_class AGND,Default)
+    (via_rule AGND,Default)
+    (rule
+      (width 1000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class MainPower,Default
+    +3V3 +5V VCC
+    (clearance_class MainPower,Default)
+    (via_rule MainPower,Default)
+    (rule
+      (width 1250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
